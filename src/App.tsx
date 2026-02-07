@@ -7,7 +7,7 @@ const client = generateClient<Schema>();
 
 function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-  const { signOut } = useAuthenticator();
+    const { user, signOut } = useAuthenticator();
 
   // Fetch & subscribe to todos (real-time)
   useEffect(() => {
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1>My Todos</h1>
+       <h1>{user?.signInDetails?.loginId}'s todos</h1>
 
       <button onClick={createTodo}>➕ New Todo</button>
 
